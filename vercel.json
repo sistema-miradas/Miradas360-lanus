@@ -2,6 +2,9 @@
   "rewrites": [
     { "source": "/2026/6b/jugadora", "destination": "/2026/6b/lanus2026-6b-jugadora.html" },
     { "source": "/2026/6b/entrenador", "destination": "/2026/6b/lanus2026-6b-entrenador.html" },
-    { "source": "/2026/6b/familia", "destination": "/2026/6b/lanus2026-6b-familia.html" }
+    { "source": "/2026/6b/familia", "destination": "/2026/6b/lanus2026-6b-familia.html" },
+    { "source": "/2026/6a/jugadora", "destination": "/2026/6a/lanus2026-6a-jugadora.html" },
+    { "source": "/2026/6a/entrenador", "destination": "/2026/6a/lanus2026-6a-entrenador.html" },
+    { "source": "/2026/6a/familia", "destination": "/2026/6a/lanus2026-6a-familia.html" }
   ]
 }
