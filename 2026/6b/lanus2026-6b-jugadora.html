@@ -637,10 +637,15 @@
     const relacionEquipo = getSeleccionado('relacion-equipo');
     const comentario = document.getElementById('comentario').value;
 
-    // Envío a Google Sheets
+    // ESTO ES LO QUE CAMBIA: Agregamos el formato correcto y el modo no-cors
     fetch(URL_SCRIPT, {
       method: 'POST',
+      mode: 'no-cors', // Evita que el navegador bloquee la salida del formulario
+      headers: {
+        'Content-Type': 'text/plain' // Google Apps Script procesa mejor el JSON con este header
+      },
       body: JSON.stringify({
+        form: 'jugadora', // Agregamos esto para que el script sepa que va a la pestaña "Jugadora"
         jugadora,
         fecha,
         estadoGeneral,
@@ -650,8 +655,20 @@
         relacionEquipo,
         comentario
       })
-    }).catch(() => {}); // silencia error de red sin bloquear el formulario
+    })
+    .then(() => {
+      console.log('Datos enviados correctamente');
+    })
+    .catch((error) => {
+      console.error('Error al enviar:', error);
+    });
 
+    // Mostrar pantalla de éxito (esto queda igual)
+    document.getElementById('paso6').classList.remove('activo');
+    document.getElementById('progreso').style.width = '100%';
+    document.getElementById('exito').classList.add('activo');
+    window.scrollTo(0, 0);
+  }
     // Mostrar pantalla de éxito
     document.getElementById('paso6').classList.remove('activo');
     document.getElementById('progreso').style.width = '100%';
