@@ -536,11 +536,15 @@
     const actitud = getChecked('actitud');
     const comentario = document.getElementById('comentario').value;
 
-    // Envío a Google Sheets
+    // CONFIGURACIÓN CORREGIDA: Agregamos el modo no-cors y el text/plain
     fetch(URL_SCRIPT, {
       method: 'POST',
+      mode: 'no-cors', // Evita el bloqueo de CORS por parte del navegador
+      headers: {
+        'Content-Type': 'text/plain' // Formato compatible para que Google Apps Script reciba JSON
+      },
       body: JSON.stringify({
-        form: 'entrenador',
+        form: 'entrenador', // Esto ya lo tenías perfecto para direccionar a la pestaña "Entrenador"
         entrenador,
         fecha,
         jugadora,
@@ -550,7 +554,13 @@
         actitud,
         comentario
       })
-    }).catch(() => {}); // silencia error de red sin bloquear el formulario
+    })
+    .then(() => {
+      console.log('Observación de entrenador enviada con éxito');
+    })
+    .catch((error) => {
+      console.error('Error al enviar:', error);
+    });
 
     // Mostrar éxito
     document.getElementById('paso3').classList.remove('activo');
