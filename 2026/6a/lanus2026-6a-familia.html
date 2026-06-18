@@ -86,7 +86,7 @@
     flex-direction: column;
     flex: 1;
     padding: 28px 24px 24px;
-    gap: 20px;
+    gap: 24px;
   }
 
   .paso.activo {
@@ -99,9 +99,10 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--verde);
+    margin-bottom: -4px;
   }
 
-  .paso h2 {
+  .paso .titulo-seccion {
     font-size: 18px;
     font-weight: 600;
     line-height: 1.35;
@@ -123,9 +124,11 @@
   }
 
   .campo label {
-    font-size: 13px;
-    font-weight: 500;
-    color: #444441;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--gris-texto);
+    margin-bottom: 2px;
   }
 
   .campo input,
@@ -223,7 +226,7 @@
 
   /* BOTÓN PRINCIPAL */
   .btn-siguiente {
-    margin-top: auto;
+    margin-top: 12px;
     padding: 15px 24px;
     background: var(--verde);
     color: #fff;
@@ -241,21 +244,6 @@
   .btn-siguiente:active {
     background: var(--verde-oscuro);
     transform: scale(0.98);
-  }
-
-  .btn-omitir {
-    margin-top: 4px;
-    padding: 12px 24px;
-    background: transparent;
-    color: #888780;
-    border: none;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: inherit;
-    cursor: pointer;
-    width: 100%;
-    text-align: center;
-    text-decoration: underline;
   }
 
   /* PANTALLA FINAL */
@@ -358,7 +346,7 @@
   <!-- PASO 1: Identificación -->
   <div class="paso activo" id="paso1">
     <span class="paso-label">Paso 1 de 2 · Identificación</span>
-    <h2>¿Por quién vas a responder?</h2>
+    <h2 class="titulo-seccion">¿Por quién vas a responder?</h2>
     <p class="subtitulo">Este espacio es opcional y busca acompañar mejor a las jugadoras. Podés responder solo las preguntas que te parezcan importantes.</p>
 
     <div class="campo">
@@ -394,9 +382,9 @@
   <!-- PASO 2: Percepción familiar -->
   <div class="paso" id="paso2">
     <span class="paso-label">Paso 2 de 2 · Tu mirada</span>
-    <h2>¿Cómo ves a tu hija respecto al hockey en este momento?</h2>
 
     <div class="campo">
+      <label>¿Cómo ves a la jugadora respecto al hockey en este momento?</label>
       <div class="opciones" id="estado-hija">
         <label class="opcion"><input type="radio" name="estado-hija" value="Muy motivada, lo disfruta"><span class="opcion-texto">Muy motivada, lo disfruta</span></label>
         <label class="opcion"><input type="radio" name="estado-hija" value="Bien en general"><span class="opcion-texto">Bien en general</span></label>
@@ -450,7 +438,6 @@
     </div>
 
     <button class="btn-siguiente" onclick="enviar()">Enviar →</button>
-    <button class="btn-omitir" onclick="enviar()">Prefiero no responder estas preguntas</button>
   </div>
 
   <!-- PANTALLA ÉXITO -->
@@ -470,14 +457,12 @@
   const progresoPct = [null, 50, 100];
   let pasoActual = 1;
 
-  // Fecha por defecto: hoy
   const hoy = new Date();
   const yyyy = hoy.getFullYear();
   const mm = String(hoy.getMonth()+1).padStart(2,'0');
   const dd = String(hoy.getDate()).padStart(2,'0');
   document.getElementById('fecha').value = `${yyyy}-${mm}-${dd}`;
 
-  // Estilo radios al seleccionar
   document.querySelectorAll('.opciones').forEach(contenedor => {
     contenedor.addEventListener('change', e => {
       if (e.target.type === 'radio') {
@@ -487,7 +472,6 @@
     });
   });
 
-  // Mostrar/ocultar origen de la presión según respuesta
   document.querySelectorAll('input[name="presion"]').forEach(radio => {
     radio.addEventListener('change', () => {
       const wrap = document.getElementById('origen-presion-wrap');
@@ -525,8 +509,6 @@
     window.scrollTo(0, 0);
   }
 
-  // ↓ ÚNICO LUGAR QUE TENÉS QUE EDITAR
-  // Pegá acá la URL que te da Apps Script al publicar
   const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzWi8ie0akiZXVJ7Y15SSni_m4vosBfIoIos-PwOXohFw1VL7GOVoNrXJ_nS5M4KsaZiQ/exec';
 
   function enviar() {
@@ -539,7 +521,6 @@
     const cambiosRecientes = getSeleccionado('cambios-recientes');
     const comentario = document.getElementById('comentario').value;
 
-    // Envío a Google Sheets
     fetch(URL_SCRIPT, {
       method: 'POST',
       body: JSON.stringify({
@@ -550,12 +531,11 @@
         presion,
         origenPresion,
         vinculo,
-        cambiosRecientes,
+        changesRecientes: cambiosRecientes,
         comentario
       })
-    }).catch(() => {}); // silencia error de red sin bloquear el formulario
+    }).catch(() => {});
 
-    // Mostrar pantalla de éxito
     document.getElementById('paso2').classList.remove('activo');
     document.getElementById('progreso').style.width = '100%';
     document.getElementById('exito-titulo').textContent = jugadora
