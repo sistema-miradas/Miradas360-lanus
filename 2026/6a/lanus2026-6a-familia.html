@@ -86,7 +86,7 @@
     flex-direction: column;
     flex: 1;
     padding: 28px 24px 24px;
-    gap: 24px;
+    gap: 20px;
   }
 
   .paso.activo {
@@ -99,10 +99,9 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--verde);
-    margin-bottom: -4px;
   }
 
-  .paso .titulo-seccion {
+  .paso h2 {
     font-size: 18px;
     font-weight: 600;
     line-height: 1.35;
@@ -124,11 +123,9 @@
   }
 
   .campo label {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.4;
-    color: var(--gris-texto);
-    margin-bottom: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #444441;
   }
 
   .campo input,
@@ -162,7 +159,13 @@
     padding-right: 38px;
   }
 
-  /* OPCIONES (single choice) */
+  .campo textarea {
+    resize: none;
+    min-height: 100px;
+    line-height: 1.6;
+  }
+
+  /* OPCIONES (Interactivas UX) */
   .opciones {
     display: flex;
     flex-direction: column;
@@ -174,6 +177,7 @@
     align-items: center;
     gap: 12px;
     padding: 14px;
+    background: #ffffff;
     border: 1px solid var(--gris-borde);
     border-radius: var(--radio-sm);
     cursor: pointer;
@@ -226,7 +230,7 @@
 
   /* BOTÓN PRINCIPAL */
   .btn-siguiente {
-    margin-top: 12px;
+    margin-top: auto;
     padding: 15px 24px;
     background: var(--verde);
     color: #fff;
@@ -343,11 +347,10 @@
     <div class="progress-fill" id="progreso" style="width: 50%"></div>
   </div>
 
-  <!-- PASO 1: Identificación -->
   <div class="paso activo" id="paso1">
     <span class="paso-label">Paso 1 de 2 · Identificación</span>
-    <h2 class="titulo-seccion">¿Por quién vas a responder?</h2>
-    <p class="subtitulo">Este espacio es opcional y busca acompañar mejor a las jugadoras. Podés responder solo las preguntas que te parezcan importantes.</p>
+    <h2>¿Por quién vas a responder?</h2>
+    <p class="subtitulo">Acompañamos el proceso formativo integrando la perspectiva de casa.</p>
 
     <div class="campo">
       <label for="jugadora">Jugadora</label>
@@ -379,12 +382,11 @@
     <button class="btn-siguiente" onclick="irA(2)">Continuar →</button>
   </div>
 
-  <!-- PASO 2: Percepción familiar -->
   <div class="paso" id="paso2">
     <span class="paso-label">Paso 2 de 2 · Tu mirada</span>
 
     <div class="campo">
-      <label>¿Cómo ves a la jugadora respecto al hockey en este momento?</label>
+      <h2>¿Cómo ves a la jugadora respecto al hockey en este momento?</h2>
       <div class="opciones" id="estado-hija">
         <label class="opcion"><input type="radio" name="estado-hija" value="Muy motivada, lo disfruta"><span class="opcion-texto">Muy motivada, lo disfruta</span></label>
         <label class="opcion"><input type="radio" name="estado-hija" value="Bien en general"><span class="opcion-texto">Bien en general</span></label>
@@ -394,7 +396,7 @@
     </div>
 
     <div class="campo">
-      <label>¿La notás presionada?</label>
+      <h2>¿La notás presionada?</h2>
       <div class="opciones" id="presion">
         <label class="opcion"><input type="radio" name="presion" value="No"><span class="opcion-texto">No</span></label>
         <label class="opcion"><input type="radio" name="presion" value="Un poco"><span class="opcion-texto">Un poco</span></label>
@@ -404,161 +406,7 @@
     </div>
 
     <div class="campo-condicional" id="origen-presion-wrap">
-      <label>¿De dónde creés que viene esa presión?</label>
+      <h2>¿De dónde creés que viene esa presión?</h2>
       <div class="opciones" id="origen-presion">
         <label class="opcion"><input type="radio" name="origen-presion" value="De ella misma (autoexigencia)"><span class="opcion-texto">De ella misma (autoexigencia)</span></label>
-        <label class="opcion"><input type="radio" name="origen-presion" value="Del equipo"><span class="opcion-texto">Del equipo</span></label>
-        <label class="opcion"><input type="radio" name="origen-presion" value="Del entrenador/a"><span class="opcion-texto">Del entrenador/a</span></label>
-        <label class="opcion"><input type="radio" name="origen-presion" value="De la familia"><span class="opcion-texto">De la familia</span></label>
-        <label class="opcion"><input type="radio" name="origen-presion" value="No sabría decir"><span class="opcion-texto">No sabría decir</span></label>
-      </div>
-    </div>
-
-    <div class="campo">
-      <label>¿Cómo ves su relación con el equipo?</label>
-      <div class="opciones" id="vinculo">
-        <label class="opcion"><input type="radio" name="vinculo" value="Integrada"><span class="opcion-texto">Integrada</span></label>
-        <label class="opcion"><input type="radio" name="vinculo" value="Normal"><span class="opcion-texto">Normal</span></label>
-        <label class="opcion"><input type="radio" name="vinculo" value="Aislada"><span class="opcion-texto">Aislada</span></label>
-      </div>
-    </div>
-
-    <div class="campo">
-      <label>¿Hubo cambios recientes en cómo vive el hockey?</label>
-      <div class="opciones" id="cambios-recientes">
-        <label class="opcion"><input type="radio" name="cambios-recientes" value="No"><span class="opcion-texto">No</span></label>
-        <label class="opcion"><input type="radio" name="cambios-recientes" value="Sí, positivos"><span class="opcion-texto">Sí, positivos</span></label>
-        <label class="opcion"><input type="radio" name="cambios-recientes" value="Sí, negativos"><span class="opcion-texto">Sí, negativos</span></label>
-      </div>
-    </div>
-
-    <div class="campo">
-      <label for="comentario">¿Hay algo que te preocupe o te gustaría compartir?</label>
-      <textarea id="comentario" placeholder="Opcional. Cualquier comentario que creas importante para el cuerpo técnico…"></textarea>
-    </div>
-
-    <button class="btn-siguiente" onclick="enviar()">Enviar →</button>
-  </div>
-
-  <!-- PANTALLA ÉXITO -->
-  <div class="pantalla-exito" id="exito">
-    <div class="exito-icono">🏑</div>
-    <div class="exito-titulo" id="exito-titulo">¡Gracias por tu mirada!</div>
-    <p class="exito-subtitulo">Los datos ya están en el sistema del club y serán procesados para trabajar juntos.</p>
-    <p class="exito-firma">Tu mirada hace la diferencia.<br>Gracias por estos segundos para el crecimiento de las chicas y del equipo.</p>
-    <button class="btn-reiniciar" onclick="reiniciar()">+ Cargar otra respuesta</button>
-  </div>
-
-  <div class="marca-footer"><strong>Miradas 360</strong> · Sistema de seguimiento formativo</div>
-</div>
-
-<script>
-  const pasos = [null, 'paso1','paso2'];
-  const progresoPct = [null, 50, 100];
-  let pasoActual = 1;
-
-  const hoy = new Date();
-  const yyyy = hoy.getFullYear();
-  const mm = String(hoy.getMonth()+1).padStart(2,'0');
-  const dd = String(hoy.getDate()).padStart(2,'0');
-  document.getElementById('fecha').value = `${yyyy}-${mm}-${dd}`;
-
-  document.querySelectorAll('.opciones').forEach(contenedor => {
-    contenedor.addEventListener('change', e => {
-      if (e.target.type === 'radio') {
-        contenedor.querySelectorAll('.opcion').forEach(op => op.classList.remove('seleccionada'));
-        e.target.closest('.opcion').classList.add('seleccionada');
-      }
-    });
-  });
-
-  document.querySelectorAll('input[name="presion"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      const wrap = document.getElementById('origen-presion-wrap');
-      if (radio.value === 'No') {
-        wrap.classList.remove('activo');
-        wrap.querySelectorAll('input[type="radio"]').forEach(r => {
-          r.checked = false;
-          r.closest('.opcion').classList.remove('seleccionada');
-        });
-      } else {
-        wrap.classList.add('activo');
-      }
-    });
-  });
-
-  function getSeleccionado(name) {
-    const el = document.querySelector(`input[name="${name}"]:checked`);
-    return el ? el.value : '';
-  }
-
-  function irA(n) {
-    if (pasoActual === 1) {
-      const jugadora = document.getElementById('jugadora').value;
-      if (!jugadora) {
-        document.getElementById('jugadora').focus();
-        document.getElementById('jugadora').style.borderColor = '#E24B4A';
-        setTimeout(() => document.getElementById('jugadora').style.borderColor = '', 1500);
-        return;
-      }
-    }
-    document.getElementById(pasos[pasoActual]).classList.remove('activo');
-    pasoActual = n;
-    document.getElementById(pasos[pasoActual]).classList.add('activo');
-    document.getElementById('progreso').style.width = progresoPct[n] + '%';
-    window.scrollTo(0, 0);
-  }
-
-  const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzWi8ie0akiZXVJ7Y15SSni_m4vosBfIoIos-PwOXohFw1VL7GOVoNrXJ_nS5M4KsaZiQ/exec';
-
-  function enviar() {
-    const jugadora = document.getElementById('jugadora').value;
-    const fecha = document.getElementById('fecha').value;
-    const estadoHija = getSeleccionado('estado-hija');
-    const presion = getSeleccionado('presion');
-    const origenPresion = getSeleccionado('origen-presion');
-    const vinculo = getSeleccionado('vinculo');
-    const cambiosRecientes = getSeleccionado('cambios-recientes');
-    const comentario = document.getElementById('comentario').value;
-
-    fetch(URL_SCRIPT, {
-      method: 'POST',
-      body: JSON.stringify({
-        form: 'familia',
-        jugadora,
-        fecha,
-        estadoHija,
-        presion,
-        origenPresion,
-        vinculo,
-        changesRecientes: cambiosRecientes,
-        comentario
-      })
-    }).catch(() => {});
-
-    document.getElementById('paso2').classList.remove('activo');
-    document.getElementById('progreso').style.width = '100%';
-    document.getElementById('exito-titulo').textContent = jugadora
-      ? `¡Observación de ${jugadora.split(' ')[0]} registrada con éxito! 🏑`
-      : '¡Gracias por tu mirada!';
-    document.getElementById('exito').classList.add('activo');
-    window.scrollTo(0, 0);
-  }
-
-  function reiniciar() {
-    document.getElementById('exito').classList.remove('activo');
-    document.getElementById('jugadora').value = '';
-    document.getElementById('comentario').value = '';
-    document.querySelectorAll('input[type="radio"]').forEach(r => {
-      r.checked = false;
-      r.closest('.opcion').classList.remove('seleccionada');
-    });
-    document.getElementById('origen-presion-wrap').classList.remove('activo');
-    pasoActual = 1;
-    document.getElementById('paso1').classList.add('activo');
-    document.getElementById('progreso').style.width = '50%';
-    window.scrollTo(0, 0);
-  }
-</script>
-</body>
-</html>
+        <label class="opcion"><input type="radio" name="origen-presion" value="Del equipo"><span class="opcion-texto
