@@ -494,12 +494,6 @@
     return el ? el.value : '';
   }
 
-  function marcarError(contenedor) {
-    contenedor.style.outline = '2px solid #E24B4A';
-    contenedor.style.borderRadius = 'var(--radio-sm)';
-    setTimeout(() => contenedor.style.outline = '', 1200);
-  }
-
   function irA(n) {
     if (pasoActual === 1) {
       const jugadora = document.getElementById('jugadora').value;
@@ -520,16 +514,7 @@
   const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzWi8ie0akiZXVJ7Y15SSni_m4vosBfIoIos-PwOXohFw1VL7GOVoNrXJ_nS5M4KsaZiQ/exec';
 
   function enviar() {
-    if (!getSeleccionado('estado-hija')) { marcarError(document.getElementById('estado-hija')); return; }
-    if (!getSeleccionado('presion')) { marcarError(document.getElementById('presion')); return; }
-    if (getSeleccionado('presion') !== 'No' && !getSeleccionado('origen-presion')) { marcarError(document.getElementById('origen-presion')); return; }
-    if (!getSeleccionado('vinculo')) { marcarError(document.getElementById('vinculo')); return; }
-    if (!getSeleccionado('cambios-recientes')) { marcarError(document.getElementById('cambios-recientes')); return; }
-
-    function enviar() {
-    // SE ELIMINARON LAS RESTRICCIONES Y MARCAS DE ERROR EN ROJO
-    // Ahora el formulario se procesa aunque falten respuestas.
-
+    // Las preguntas del paso 2 ya no tienen validación obligatoria
     const jugadora = document.getElementById('jugadora').value;
     const fecha = document.getElementById('fecha').value;
     const estadoHija = getSeleccionado('estado-hija');
