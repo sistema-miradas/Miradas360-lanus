@@ -526,6 +526,10 @@
     if (!getSeleccionado('vinculo')) { marcarError(document.getElementById('vinculo')); return; }
     if (!getSeleccionado('cambios-recientes')) { marcarError(document.getElementById('cambios-recientes')); return; }
 
+    function enviar() {
+    // SE ELIMINARON LAS RESTRICCIONES Y MARCAS DE ERROR EN ROJO
+    // Ahora el formulario se procesa aunque falten respuestas.
+
     const jugadora = document.getElementById('jugadora').value;
     const fecha = document.getElementById('fecha').value;
     const estadoHija = getSeleccionado('estado-hija');
@@ -553,7 +557,6 @@
     document.getElementById('paso2').classList.remove('activo');
     document.getElementById('progreso').style.width = '100%';
     
-    // TEXTO CORREGIDO: Sin el segundo emoji al final del string
     document.getElementById('exito-titulo').textContent = jugadora
       ? `¡Observación de ${jugadora.split(' ')[0]} registrada!`
       : '¡Gracias por tu mirada!';
@@ -561,7 +564,7 @@
     document.getElementById('exito').classList.add('activo');
     window.scrollTo(0, 0);
   }
-
+   
   function reiniciar() {
     document.getElementById('exito').classList.remove('activo');
     document.getElementById('jugadora').value = '';
