@@ -176,7 +176,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 14px;
+    padding: 14px;
+    background: #ffffff;
     border: 1px solid var(--gris-borde);
     border-radius: var(--radio-sm);
     cursor: pointer;
@@ -333,7 +334,7 @@
 
   <div class="header">
     <div class="header-marca">Miradas 360 · Entrenador</div>
-    <h1>Lanús Hockey 6°B</h1>
+    <h1>Lanús Hockey 6°A</h1>
     <p>Observaciones del último entrenamiento / partido</p>
   </div>
 
@@ -473,12 +474,6 @@
     });
   });
 
-  function marcarError(contenedor) {
-    contenedor.style.outline = '2px solid #E24B4A';
-    contenedor.style.borderRadius = 'var(--radio-sm)';
-    setTimeout(() => contenedor.style.outline = '', 1200);
-  }
-
   function irA(n) {
     if (pasoActual === 1) {
       const jugadora = document.getElementById('jugadora').value;
@@ -497,16 +492,7 @@
       }
     }
 
-    if (pasoActual === 2) {
-      const total = getChecked('rendimiento').length
-        + getChecked('regulacion').length
-        + getChecked('vinculo').length
-        + getChecked('actitud').length;
-      if (total === 0) {
-        marcarError(document.getElementById('paso2'));
-        return;
-      }
-    }
+    // ELIMINADA LA RESTRICCIÓN DEL PASO 2 (Las preguntas ahora son opcionales)
 
     document.getElementById(pasos[pasoActual]).classList.remove('activo');
     pasoActual = n;
@@ -520,8 +506,6 @@
       .map(cb => cb.value);
   }
 
-  // ↓ ÚNICO LUGAR QUE TENÉS QUE EDITAR
-  // Pegá acá la URL que te da Apps Script al publicar
   const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzWi8ie0akiZXVJ7Y15SSni_m4vosBfIoIos-PwOXohFw1VL7GOVoNrXJ_nS5M4KsaZiQ/exec';
 
   function enviar() {
@@ -548,12 +532,17 @@
         actitud,
         comentario
       })
-    }).catch(() => {}); // silencia error de red sin bloquear el formulario
+    }).catch(() => {});
 
     // Mostrar éxito
     document.getElementById('paso3').classList.remove('activo');
     document.getElementById('progreso').style.width = '100%';
-    document.getElementById('exito-titulo').textContent = `¡Observación de ${jugadora.split(' ')[0]} registrada con éxito! 🏑`;
+    
+    // Título corregido y unificado
+    document.getElementById('exito-titulo').textContent = jugadora
+      ? `¡Observación de ${jugadora.split(' ')[0]} registrada!`
+      : '¡Observación registrada!';
+      
     document.getElementById('exito').classList.add('activo');
     window.scrollTo(0, 0);
   }
