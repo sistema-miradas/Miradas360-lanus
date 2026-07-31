@@ -44,7 +44,13 @@
     padding: 28px 24px 24px;
     color: #fff;
   }
-
+  .logo {
+    display: block;
+    width: 170px;
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto 16px auto;
+  }
   .header-marca {
     font-size: 11px;
     font-weight: 600;
@@ -333,10 +339,23 @@
 <div class="shell">
 
   <div class="header">
-    <div class="header-marca">Miradas 360 · Entrenador</div>
-    <h1>Lanús Hockey 6°A</h1>
-    <p>Observaciones del último entrenamiento / partido</p>
+
+  <img
+    src="../../assets/logo-miradas-fondoblanco.svg"
+    alt="Miradas 360"
+    class="logo">
+
+  <div class="header-marca">
+    Miradas 360 · Entrenador
   </div>
+
+  <h1>Lanús Hockey 6°A</h1>
+
+  <p>
+    Observaciones del último entrenamiento / partido
+  </p>
+
+</div>
 
   <div class="progress-bar">
     <div class="progress-fill" id="progreso" style="width: 33%"></div>
