@@ -59,9 +59,9 @@
   }
 
   .header h1 {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.35;
     margin-bottom: 0;
   }
 
@@ -281,7 +281,7 @@
     text-decoration: underline;
   }
 
-  /* PANTALLA FINAL */
+  /* PANTALLA ÉXITO */
   .pantalla-exito {
     display: none;
     flex-direction: column;
@@ -543,7 +543,6 @@
   document.querySelectorAll('.opciones').forEach(contenedor => {
     contenedor.addEventListener('change', e => {
       if (e.target.type === 'radio') {
-        // deseleccionar visualmente las hermanas
         contenedor.querySelectorAll('.opcion').forEach(op => op.classList.remove('seleccionada'));
         e.target.closest('.opcion').classList.add('seleccionada');
       } else if (e.target.type === 'checkbox') {
@@ -558,7 +557,6 @@
       const wrap = document.getElementById('origen-presion-wrap');
       if (radio.value === 'No') {
         wrap.classList.remove('activo');
-        // limpiar selección si había
         wrap.querySelectorAll('input[type="checkbox"]').forEach(cb => {
           cb.checked = false;
           cb.closest('.opcion').classList.remove('seleccionada');
@@ -586,7 +584,6 @@
   }
 
   function irA(n) {
-    // Validaciones por paso (todo obligatorio salvo comentario)
     if (pasoActual === 1) {
       const jugadora = document.getElementById('jugadora').value;
       if (!jugadora) {
@@ -627,8 +624,6 @@
     window.scrollTo(0, 0);
   }
 
-  // ↓ ÚNICO LUGAR QUE TENÉS QUE EDITAR
-  // Pegá acá la URL que te da Apps Script al publicar
   const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzWi8ie0akiZXVJ7Y15SSni_m4vosBfIoIos-PwOXohFw1VL7GOVoNrXJ_nS5M4KsaZiQ/exec';
 
   function enviar() {
@@ -641,7 +636,6 @@
     const relacionEquipo = getSeleccionado('relacion-equipo');
     const comentario = document.getElementById('comentario').value;
 
-    // Envío corregido a Google Sheets
     fetch(URL_SCRIPT, {
       method: 'POST',
       mode: 'no-cors',
@@ -649,7 +643,7 @@
         'Content-Type': 'text/plain'
       },
       body: JSON.stringify({
-        form: 'jugadora', // Esto ayuda a Apps Script a identificar de qué formulario viene
+        form: 'jugadora',
         jugadora,
         fecha,
         estadoGeneral,
@@ -661,7 +655,6 @@
       })
     }).catch((error) => console.error('Error al enviar:', error));
 
-    // Mostrar pantalla de éxito
     document.getElementById('paso6').classList.remove('activo');
     document.getElementById('progreso').style.width = '100%';
     document.getElementById('exito').classList.add('activo');
