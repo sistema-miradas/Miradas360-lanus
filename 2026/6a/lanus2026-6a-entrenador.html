@@ -168,7 +168,7 @@
     line-height: 1.6;
   }
 
-  /* OPCIONES (DISPOSICIÓN VERTICAL COMO EN OTROS FORMS) */
+  /* OPCIONES (DISPOSICIÓN VERTICAL) */
   .opciones {
     display: flex;
     flex-direction: column;
@@ -394,11 +394,10 @@
     <button class="btn-siguiente" onclick="irA(2)">Continuar →</button>
   </div>
 
-  <!-- PASO 2: Observaciones (SELECCIÓN ÚNICA Y VERTICAL) -->
+  <!-- PASO 2: Observaciones (ENCABEZADO UNIFICADO Y DESTACADO) -->
   <div class="paso" id="paso2">
     <span class="paso-label">Paso 2 de 3 · Observación</span>
-    <h2>Seleccionar lo que corresponda</h2>
-    <p class="subtitulo">Seleccioná una opción por categoría (opcional).</p>
+    <h2>Seleccioná una opción por categoría (opcional)</h2>
 
     <div class="campo">
       <div class="grupo-label">Rendimiento</div>
@@ -476,7 +475,7 @@
   const dd = String(hoy.getDate()).padStart(2,'0');
   document.getElementById('fecha').value = `${yyyy}-${mm}-${dd}`;
 
-  // Estilo radios al seleccionar (selección única por grupo)
+  // Estilo radios al seleccionar
   document.querySelectorAll('.opciones').forEach(contenedor => {
     contenedor.addEventListener('change', e => {
       if (e.target.type === 'radio') {
