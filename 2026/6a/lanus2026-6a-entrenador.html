@@ -43,7 +43,7 @@
   /* HEADER */
   .header {
     background: linear-gradient(135deg, var(--verde) 0%, var(--verde-oscuro) 100%);
-    padding: 32px 24px 24px;
+    padding: 28px 24px 22px;
     color: #fff;
     text-align: center;
   }
@@ -54,24 +54,17 @@
     height: auto;
     margin: 0 auto 16px auto;
   }
-  .header-marca {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    opacity: 0.85;
-    margin-bottom: 6px;
-  }
-
+  
   .header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.25;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
     margin-bottom: 6px;
   }
 
   .header p {
     font-size: 13px;
+    font-weight: 500;
     opacity: 0.9;
     line-height: 1.4;
   }
@@ -112,7 +105,7 @@
 
   .paso h2 {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.3;
     color: var(--gris-texto);
   }
@@ -356,9 +349,8 @@
 
   <div class="header">
     <img src="/Assets/logo-miradas-fondocolor.svg" alt="Miradas 360" class="logo">
-    <div class="header-marca">Entrenador</div>
-    <h1>Lanús Hockey 6°A</h1>
-    <p>Observaciones del último entrenamiento / partido</p>
+    <h1>Mirada Entrenador · Lanús Hockey · 6°A</h1>
+    <p>Observaciones del último entrenamiento o partido</p>
   </div>
 
   <div class="progress-bar">
@@ -368,20 +360,20 @@
   <!-- PASO 1: Datos básicos -->
   <div class="paso activo" id="paso1">
     <span class="paso-label">Paso 1 de 3 · Identificación</span>
-    <h2>¿Quién registra y sobre qué evento?</h2>
+    <h2>Completá los datos del registro</h2>
 
     <div class="campo">
-      <label for="entrenador">¿Quién completa este registro?</label>
+      <label for="entrenador">Entrenador</label>
       <input type="text" id="entrenador" placeholder="Tu nombre o inicial" value="Martín Alcami" autocomplete="off" />
     </div>
 
     <div class="campo">
-      <label for="fecha">Fecha del evento</label>
+      <label for="fecha">Fecha</label>
       <input type="date" id="fecha" />
     </div>
 
     <div class="campo">
-      <label for="jugadora">Seleccionar jugadora</label>
+      <label for="jugadora">Jugadora</label>
       <select id="jugadora">
         <option value="" disabled selected>Seleccionar jugadora…</option>
         <option>Aitana Costa</option>
