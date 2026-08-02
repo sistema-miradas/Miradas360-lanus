@@ -12,8 +12,8 @@
     --verde-claro: #E1F5EE;
     --verde-oscuro: #0F6E56;
     --gris-texto: #2C2C2A;
-    --gris-suave: #F8F9FA;
-    --gris-borde: #E2E8F0;
+    --gris-suave: #F1EFE8; /* Tono arena unificado */
+    --gris-borde: rgba(0,0,0,0.12);
     --radio: 12px;
     --radio-sm: 8px;
     --sombra: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -113,7 +113,7 @@
 
   .paso .subtitulo {
     font-size: 13.5px;
-    color: #64748B;
+    color: #5F5E5A;
     margin-top: -10px;
     line-height: 1.4;
   }
@@ -128,7 +128,7 @@
   .campo label {
     font-size: 13.5px;
     font-weight: 600;
-    color: #334155;
+    color: #444441;
   }
 
   .campo input,
@@ -136,7 +136,7 @@
   .campo textarea {
     width: 100%;
     padding: 13px 16px;
-    border: 1.5px solid var(--gris-borde);
+    border: 1px solid var(--gris-borde);
     border-radius: var(--radio-sm);
     font-size: 15px;
     font-family: inherit;
@@ -152,11 +152,11 @@
   .campo select:focus,
   .campo textarea:focus {
     border-color: var(--verde);
-    box-shadow: 0 0 0 3px rgba(29,158,117,0.15);
+    box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
   }
 
   .campo select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235F5E5A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 14px center;
     padding-right: 40px;
@@ -182,7 +182,7 @@
     text-align: center;
     padding: 14px 12px;
     background: #ffffff;
-    border: 1.5px solid var(--gris-borde);
+    border: 1px solid var(--gris-borde);
     border-radius: var(--radio-sm);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -192,7 +192,7 @@
 
   .opcion:hover {
     border-color: #CBD5E1;
-    background: var(--gris-suave);
+    background: var(--gris-suave); /* Fondo secundario unificado */
   }
 
   .opcion:active {
@@ -222,11 +222,11 @@
 
   /* SEPARADOR DE GRUPO */
   .grupo-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #64748B;
+    color: #888780;
     margin-top: 6px;
     margin-bottom: 2px;
   }
@@ -245,7 +245,6 @@
     cursor: pointer;
     width: 100%;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(29, 158, 117, 0.25);
   }
 
   .btn-siguiente:hover {
@@ -293,14 +292,14 @@
 
   .exito-subtitulo {
     font-size: 15px;
-    color: #64748B;
+    color: #5F5E5A;
     line-height: 1.6;
     max-width: 320px;
   }
 
   .exito-firma {
     font-size: 13px;
-    color: #94A3B8;
+    color: #888780;
     margin-top: 8px;
     font-style: italic;
   }
@@ -331,12 +330,11 @@
   /* MARCA FOOTER */
   .marca-footer {
     text-align: center;
-    padding: 16px;
-    font-size: 12px;
-    color: #94A3B8;
-    letter-spacing: 0.03em;
+    padding: 12px;
+    font-size: 11px;
+    color: #B4B2A9;
+    letter-spacing: 0.05em;
     border-top: 1px solid var(--gris-borde);
-    background: #FAFAFA;
   }
 
   .marca-footer strong {
@@ -532,7 +530,6 @@
     const actitud = getChecked('actitud');
     const comentario = document.getElementById('comentario').value;
 
-    // Envío a Google Sheets
     fetch(URL_SCRIPT, {
       method: 'POST',
       body: JSON.stringify({
@@ -548,11 +545,9 @@
       })
     }).catch(() => {});
 
-    // Mostrar éxito
     document.getElementById('paso3').classList.remove('activo');
     document.getElementById('progreso').style.width = '100%';
     
-    // Título de éxito
     document.getElementById('exito-titulo').textContent = jugadora
       ? `¡Observación de ${jugadora.split(' ')[0]} registrada!`
       : '¡Observación registrada!';
