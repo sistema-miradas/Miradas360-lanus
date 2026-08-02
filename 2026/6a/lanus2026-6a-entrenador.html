@@ -12,7 +12,7 @@
     --verde-claro: #E1F5EE;
     --verde-oscuro: #0F6E56;
     --gris-texto: #2C2C2A;
-    --gris-suave: #F1EFE8; /* Tono arena unificado */
+    --gris-suave: #F1EFE8;
     --gris-borde: rgba(0,0,0,0.12);
     --radio: 12px;
     --radio-sm: 8px;
@@ -168,19 +168,17 @@
     line-height: 1.6;
   }
 
-  /* OPCIONES MULTIPLE CHOICE */
+  /* OPCIONES (DISPOSICIÓN VERTICAL COMO EN OTROS FORMS) */
   .opciones {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .opcion {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 14px 12px;
+    padding: 14px 16px;
     background: #ffffff;
     border: 1px solid var(--gris-borde);
     border-radius: var(--radio-sm);
@@ -192,20 +190,20 @@
 
   .opcion:hover {
     border-color: #CBD5E1;
-    background: var(--gris-suave); /* Fondo secundario unificado */
+    background: var(--gris-suave);
   }
 
   .opcion:active {
-    transform: scale(0.97);
+    transform: scale(0.98);
   }
 
-  .opcion input[type="checkbox"] {
+  .opcion input[type="radio"] {
     display: none;
   }
 
   .opcion-texto {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 400;
     line-height: 1.3;
     color: var(--gris-texto);
   }
@@ -217,7 +215,7 @@
 
   .opcion.seleccionada .opcion-texto {
     color: var(--verde-oscuro);
-    font-weight: 600;
+    font-weight: 500;
   }
 
   /* SEPARADOR DE GRUPO */
@@ -227,7 +225,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #888780;
-    margin-top: 6px;
+    margin-top: 8px;
     margin-bottom: 2px;
   }
 
@@ -396,45 +394,45 @@
     <button class="btn-siguiente" onclick="irA(2)">Continuar →</button>
   </div>
 
-  <!-- PASO 2: Observaciones -->
+  <!-- PASO 2: Observaciones (SELECCIÓN ÚNICA Y VERTICAL) -->
   <div class="paso" id="paso2">
     <span class="paso-label">Paso 2 de 3 · Observación</span>
     <h2>Seleccionar lo que corresponda</h2>
-    <p class="subtitulo">Podés marcar una o varias opciones por categoría (opcional).</p>
+    <p class="subtitulo">Seleccioná una opción por categoría (opcional).</p>
 
     <div class="campo">
       <div class="grupo-label">Rendimiento</div>
       <div class="opciones" id="rendimiento">
-        <label class="opcion"><input type="checkbox" value="Bajo"><span class="opcion-texto">Bajo</span></label>
-        <label class="opcion"><input type="checkbox" value="Medio"><span class="opcion-texto">Medio</span></label>
-        <label class="opcion"><input type="checkbox" value="Alto"><span class="opcion-texto">Alto</span></label>
+        <label class="opcion"><input type="radio" name="rendimiento" value="Bajo"><span class="opcion-texto">Bajo</span></label>
+        <label class="opcion"><input type="radio" name="rendimiento" value="Medio"><span class="opcion-texto">Medio</span></label>
+        <label class="opcion"><input type="radio" name="rendimiento" value="Alto"><span class="opcion-texto">Alto</span></label>
       </div>
     </div>
 
     <div class="campo">
       <div class="grupo-label">Regulación emocional</div>
       <div class="opciones" id="regulacion">
-        <label class="opcion"><input type="checkbox" value="Neutra"><span class="opcion-texto">Neutra</span></label>
-        <label class="opcion"><input type="checkbox" value="Se frustró"><span class="opcion-texto">Se frustró</span></label>
-        <label class="opcion"><input type="checkbox" value="Se recompuso"><span class="opcion-texto">Se recompuso</span></label>
+        <label class="opcion"><input type="radio" name="regulacion" value="Neutra"><span class="opcion-texto">Neutra</span></label>
+        <label class="opcion"><input type="radio" name="regulacion" value="Se frustró"><span class="opcion-texto">Se frustró</span></label>
+        <label class="opcion"><input type="radio" name="regulacion" value="Se recompuso"><span class="opcion-texto">Se recompuso</span></label>
       </div>
     </div>
 
     <div class="campo">
       <div class="grupo-label">Vínculo con el equipo</div>
       <div class="opciones" id="vinculo">
-        <label class="opcion"><input type="checkbox" value="Integrada"><span class="opcion-texto">Integrada</span></label>
-        <label class="opcion"><input type="checkbox" value="Normal"><span class="opcion-texto">Normal</span></label>
-        <label class="opcion"><input type="checkbox" value="Aislada"><span class="opcion-texto">Aislada</span></label>
+        <label class="opcion"><input type="radio" name="vinculo" value="Integrada"><span class="opcion-texto">Integrada</span></label>
+        <label class="opcion"><input type="radio" name="vinculo" value="Normal"><span class="opcion-texto">Normal</span></label>
+        <label class="opcion"><input type="radio" name="vinculo" value="Aislada"><span class="opcion-texto">Aislada</span></label>
       </div>
     </div>
 
     <div class="campo">
       <div class="grupo-label">Actitud ante indicaciones</div>
       <div class="opciones" id="actitud">
-        <label class="opcion"><input type="checkbox" value="Receptiva"><span class="opcion-texto">Receptiva</span></label>
-        <label class="opcion"><input type="checkbox" value="Neutra"><span class="opcion-texto">Neutra</span></label>
-        <label class="opcion"><input type="checkbox" value="Resistencia"><span class="opcion-texto">Resistencia</span></label>
+        <label class="opcion"><input type="radio" name="actitud" value="Receptiva"><span class="opcion-texto">Receptiva</span></label>
+        <label class="opcion"><input type="radio" name="actitud" value="Neutra"><span class="opcion-texto">Neutra</span></label>
+        <label class="opcion"><input type="radio" name="actitud" value="Resistencia"><span class="opcion-texto">Resistencia</span></label>
       </div>
     </div>
 
@@ -478,12 +476,12 @@
   const dd = String(hoy.getDate()).padStart(2,'0');
   document.getElementById('fecha').value = `${yyyy}-${mm}-${dd}`;
 
-  // Estilo checkboxes al seleccionar
+  // Estilo radios al seleccionar (selección única por grupo)
   document.querySelectorAll('.opciones').forEach(contenedor => {
     contenedor.addEventListener('change', e => {
-      if (e.target.type === 'checkbox') {
-        const label = e.target.closest('.opcion');
-        label.classList.toggle('seleccionada', e.target.checked);
+      if (e.target.type === 'radio') {
+        contenedor.querySelectorAll('.opcion').forEach(op => op.classList.remove('seleccionada'));
+        e.target.closest('.opcion').classList.add('seleccionada');
       }
     });
   });
@@ -513,9 +511,9 @@
     window.scrollTo(0, 0);
   }
 
-  function getChecked(contenedorId) {
-    return Array.from(document.querySelectorAll(`#${contenedorId} input[type="checkbox"]:checked`))
-      .map(cb => cb.value);
+  function getSeleccionado(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
   }
 
   const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzWi8ie0akiZXVJ7Y15SSni_m4vosBfIoIos-PwOXohFw1VL7GOVoNrXJ_nS5M4KsaZiQ/exec';
@@ -524,10 +522,10 @@
     const jugadora = document.getElementById('jugadora').value;
     const entrenador = document.getElementById('entrenador').value;
     const fecha = document.getElementById('fecha').value;
-    const rendimiento = getChecked('rendimiento');
-    const regulacion = getChecked('regulacion');
-    const vinculo = getChecked('vinculo');
-    const actitud = getChecked('actitud');
+    const rendimiento = getSeleccionado('rendimiento');
+    const regulacion = getSeleccionado('regulacion');
+    const vinculo = getSeleccionado('vinculo');
+    const actitud = getSeleccionado('actitud');
     const comentario = document.getElementById('comentario').value;
 
     fetch(URL_SCRIPT, {
@@ -560,7 +558,7 @@
     document.getElementById('exito').classList.remove('activo');
     document.getElementById('jugadora').value = '';
     document.getElementById('comentario').value = '';
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    document.querySelectorAll('input[type="radio"]').forEach(cb => {
       cb.checked = false;
       cb.closest('.opcion').classList.remove('seleccionada');
     });
