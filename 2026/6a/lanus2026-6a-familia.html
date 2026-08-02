@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Miradas 360 · Familia · Lanús Hockey 6°A</title>
+<title>Mirada Familia · Lanús Hockey 6°A</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -38,39 +38,34 @@
     flex-direction: column;
   }
 
-    /* HEADER */
+  /* HEADER */
   .header {
     background: var(--verde);
-    padding: 28px 24px 24px;
+    padding: 22px 24px 20px;
     color: #fff;
   }
   .logo {
     display: block;
-    width: 170px;
+    width: 135px;
     max-width: 80%;
     height: auto;
-    margin: 0 auto 16px auto;
+    margin: 0 auto 20px auto;
   }
+  
+  /* Contexto de marca */
   .header-marca {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    opacity: 0.75;
-    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: .88;
+    margin-bottom: 8px;
   }
 
+  /* Título principal */
   .header h1 {
     font-size: 20px;
     font-weight: 600;
     line-height: 1.3;
-    margin-bottom: 4px;
-  }
-
-  .header p {
-    font-size: 13px;
-    opacity: 0.8;
-    line-height: 1.4;
+    margin-bottom: 0;
   }
 
   /* PROGRESS */
@@ -99,6 +94,7 @@
     display: flex;
   }
 
+  /* Etiquetas (Paso X de X) */
   .paso-label {
     font-size: 11px;
     font-weight: 600;
@@ -107,6 +103,7 @@
     color: var(--verde);
   }
 
+  /* Preguntas */
   .paso h2 {
     font-size: 18px;
     font-weight: 600;
@@ -114,8 +111,10 @@
     color: var(--gris-texto);
   }
 
+  /* Subtítulos */
   .paso .subtitulo {
     font-size: 14px;
+    font-weight: 400;
     color: #5F5E5A;
     margin-top: -12px;
     line-height: 1.5;
@@ -202,6 +201,7 @@
 
   .opcion-texto {
     font-size: 15px;
+    font-weight: 400;
     line-height: 1.3;
     color: var(--gris-texto);
     flex: 1;
@@ -345,23 +345,26 @@
 
   <div class="header">
 
-  <img src="/Assets/logo-miradas-fondocolor.svg"
-     alt="Miradas 360"
-     class="logo">
+    <img src="/Assets/logo-miradas-fondocolor.svg"
+         alt="Miradas 360"
+         class="logo">
 
-    <div class="header-marca">Familia</div>
-    <h1>Lanús Hockey 6°A</h1>
-    <p>Mirada familiar sobre el proceso deportivo</p>
+    <div class="header-marca">
+      Mirada Familia · Lanús Hockey · 6°A
+    </div>
+
+    <h1>¿Cómo se viven los últimos entrenamientos o partidos desde casa?</h1>
+
   </div>
 
   <div class="progress-bar">
     <div class="progress-fill" id="progreso" style="width: 50%"></div>
   </div>
 
+  <!-- PASO 1: Identificación -->
   <div class="paso activo" id="paso1">
     <span class="paso-label">Paso 1 de 2 · Identificación</span>
-    <h2>¿Por quién vas a responder?</h2>
-    <p class="subtitulo">Acompañamos el proceso formativo integrando la perspectiva de casa.</p>
+    <h2>¿Sobre qué jugadora vas a responder?</h2>
 
     <div class="campo">
       <label for="jugadora">Jugadora</label>
@@ -386,13 +389,14 @@
     </div>
 
     <div class="campo">
-      <label for="fecha">Fecha del evento</label>
+      <label for="fecha">Fecha</label>
       <input type="date" id="fecha" />
     </div>
 
     <button class="btn-siguiente" onclick="irA(2)">Continuar →</button>
   </div>
 
+  <!-- PASO 2: Tu mirada -->
   <div class="paso" id="paso2">
     <span class="paso-label">Paso 2 de 2 · Tu mirada</span>
 
@@ -446,7 +450,7 @@
     </div>
 
     <div class="campo">
-      <label for="comentario" style="font-size: 15px; font-weight: 600; color: var(--gris-texto);">¿Hay algo que te preocupe o te gustaría compartir?</label>
+      <label for="comentario">¿Hay algo que te preocupe o te gustaría compartir?</label>
       <textarea id="comentario" placeholder="Opcional. Cualquier detalle que consideres clave para el cuerpo técnico…"></textarea>
     </div>
 
@@ -525,7 +529,6 @@
   const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzWi8ie0akiZXVJ7Y15SSni_m4vosBfIoIos-PwOXohFw1VL7GOVoNrXJ_nS5M4KsaZiQ/exec';
 
   function enviar() {
-    // Las preguntas del paso 2 ya no tienen validación obligatoria
     const jugadora = document.getElementById('jugadora').value;
     const fecha = document.getElementById('fecha').value;
     const estadoHija = getSeleccionado('estado-hija');
@@ -560,7 +563,7 @@
     document.getElementById('exito').classList.add('activo');
     window.scrollTo(0, 0);
   }
-   
+    
   function reiniciar() {
     document.getElementById('exito').classList.remove('activo');
     document.getElementById('jugadora').value = '';
